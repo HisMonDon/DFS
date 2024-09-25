@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class DFSExample {
+    private static Map<Integer, List<Integer>> graph = new HashMap<>();
+
+    static {
+        graph.put(1, Arrays.asList(2, 3, 4, 5));
+        graph.put(2, Collections.singletonList(6));
+        graph.put(3, Collections.singletonList(6));
+        graph.put(4, Arrays.asList(7, 10));
+        graph.put(5, Collections.singletonList(8));
+        graph.put(6, Collections.singletonList(9));
+        graph.put(7, Collections.singletonList(10));
+    }
+
+    public static void dfs(int node, Set<Integer> visited) {
+        visited.add(node);
+        System.out.print(node + " ");
+
+        for (int neighbor : graph.getOrDefault(node, Collections.emptyList())) {
+            if (!visited.contains(neighbor)) {
+                dfs(neighbor, visited);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Set<Integer> visited = new HashSet<>();
+        dfs(1, visited);
+    }
+}
