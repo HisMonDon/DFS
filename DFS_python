@@ -1,0 +1,31 @@
+graph = {
+    1: [2, 3, 4, 5],
+    2: [6],
+    3: [6],
+    4: [7, 10],
+    5: [8],
+    6: [9],
+    7: [10]
+}
+
+def dfs(graph, node):
+    visited = set()
+    stack = []
+
+    visited.add(node)
+    stack.append(node)
+
+    while stack:
+        s = stack.pop()
+        print(s, end=' ')
+
+        for n in reversed(graph[s]):
+            if n not in visited:
+                visited.add(n)
+                stack.append(n)
+
+def main():
+    dfs(graph, 1)
+
+if __name__ == "__main__":
+    main()
