@@ -1,0 +1,21 @@
+FUNCTION dfs(graph, node):
+    SET visited TO an empty set
+    SET stack TO an empty list
+    
+    ADD node to visited
+    PUSH node onto stack 
+
+    WHILE stack is not empty:
+        SET s TO the top element of stack
+        POP the top element from stack
+        PRINT s
+
+        FOR each n in reversed(graph[s]):
+            IF n is not in visited:
+                ADD n to visited
+                PUSH n onto stack
+
+FUNCTION main():
+    CALL dfs(graph, 1)
+
+CALL main()
